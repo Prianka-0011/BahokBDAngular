@@ -4,9 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgZorroAntdModule, NzLayoutModule, NzIconModule } from 'ng-zorro-antd';
+//import { NgZorroAntdModule, NzLayoutModule, NzIconModule } from 'ng-zorro-antd';
 import { UserComponent } from './user.component';
 import { UserService } from './userservice/user.service';
+//import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserService } from './userservice/user.service';
     CommonModule,
     FormsModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   // ToastrModule
   ],
   providers: [UserService],
   bootstrap: [UserComponent]

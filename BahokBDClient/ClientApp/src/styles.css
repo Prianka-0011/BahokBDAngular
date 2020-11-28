@@ -6,7 +6,7 @@
     background-color:black;
 }
 .wrapper {
-  height: 40em;
+  height: 42em;
   padding-top:100px;
   background-size: cover;
   width: auto;
@@ -15,7 +15,7 @@
 }
 .form-area {
   width: 500px;
-  height: 400px;
+  height: auto;
   position: absolute;
   left: 50%;
   transform: translate(-50%);

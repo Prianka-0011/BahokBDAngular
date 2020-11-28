@@ -7,11 +7,11 @@ export class UserService {
   constructor(private fb: FormBuilder, private http: HttpClient) {
 
   }
-  readonly rootURL = 'https://localhost:44393/weatherforecast';
+  readonly rootURL = 'https://localhost:44393/api';
   formModel = this.fb.group({
     UserName: ['', Validators.required],
     Email: ['', Validators.email],
-    FullName: [''],
+    Phone: [''],
     Passwords: this.fb.group({
       Password: ['', [Validators.required, Validators.minLength(4)]],// Here i make mistake in braket []
       ConfirmPassword: ['', Validators.required]
@@ -30,10 +30,13 @@ export class UserService {
     var body = {
       UserName: this.formModel.value.UserName,
       Email: this.formModel.value.Email,
-      FullName: this.formModel.value.FullName,
+      Phone: this.formModel.value.Phone,
       Password: this.formModel.value.Passwords.Password
-
     }
+    console.log("body", body)
     return this.http.post(this.rootURL + '/ApplicationUser/Register', body);
+  }
+  login(formData) {
+    return this.http.post(this.rootURL + '/ApplicationUser/Login', formData);
   }
 }

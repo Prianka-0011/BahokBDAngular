@@ -17,7 +17,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { UserModule } from './user/user.module';
 import { UserService } from './user/userservice/user.service';
-
+//import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { UserService } from './user/userservice/user.service';
     NgZorroAntdModule,
     NzLayoutModule,
     NzIconModule,
-    UserModule
+    UserModule,
+   // ToastrModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
