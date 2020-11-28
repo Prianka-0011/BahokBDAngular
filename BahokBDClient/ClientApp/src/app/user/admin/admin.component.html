@@ -2,7 +2,7 @@
   <div class="overlay"></div>
   <div class="sidebar">
     <div class="top-img">
-      <img src="/ClientApp/src/assets/images/scooter.gif" alt="Alternate Text" />
+      <img src="/assets/images/scooter.gif" alt="Alternate Text" />
     </div>
     <ul>
 
@@ -17,9 +17,9 @@
                 <div class="col-lg-12 px-2">
                   <div class="submenu-box">
                     <ul class="list-unstyled m-0">
-                      <li><a asp-action="Index" asp-area="SuperAdmin" asp-controller="PaymentBankingTypes">Method List</a></li>
-                      <li><a asp-action="Index" asp-area="SuperAdmin" asp-controller="PaymentBankingOrganizations">Bank List</a></li>
-                      <li><a asp-action="Index" asp-area="SuperAdmin" asp-controller="BankBranches">Branch List</a></li>
+                      <li><a>Method List</a></li>
+                      <li><a>Bank List</a></li>
+                      <li><a>Branch List</a></li>
                     </ul>
                   </div>
                 </div>
@@ -40,8 +40,8 @@
                 <div class="col-lg-12 px-2">
                   <div class="submenu-box">
                     <ul class="list-unstyled m-0">
-                      <li><a asp-action="Index" asp-area="SuperAdmin" asp-controller="DeliveryAreaPrices">Area List</a></li>
-                      <li><a asp-action="Create" asp-area="SuperAdmin" asp-controller="DeliveryAreaPrices">Add Area</a></li>
+                      <li><a>Area List</a></li>
+                      <li><a>Add Area</a></li>
                     </ul>
                   </div>
                 </div>
@@ -62,9 +62,9 @@
                 <div class="col-lg-12 px-2">
                   <div class="submenu-box">
                     <ul class="list-unstyled m-0">
-                      <li><a asp-action="AssignRole" asp-area="SuperAdmin" asp-controller="Account">Assign Role</a></li>
-                      <li><a asp-action="CreateRole" asp-area="SuperAdmin" asp-controller="Account">Add Role</a></li>
-                      <li> <a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+                      <li><a>Assign Role</a></li>
+                      <li><a>Add Role</a></li>
+                      <li> <a>Register</a></li>
                     </ul>
                   </div>
                 </div>
@@ -74,7 +74,7 @@
         </div>
       </li>
       <li class="submenu">
-        <a asp-action="Index" asp-area="SuperAdmin" asp-controller="MarchentProfileDetails" class="nav-link collapsed text-left">
+        <a class="nav-link collapsed text-left">
           <i class="fa fa-users pre-i mr-2"></i>Marchent Settings
         </a>
       </li>
@@ -89,8 +89,8 @@
                 <div class="col-lg-12 px-2">
                   <div class="submenu-box">
                     <ul class="list-unstyled m-0">
-                      <li><a asp-action="Index" asp-area="SuperAdmin" asp-controller="Store">Store List</a></li>
-                      <li><a asp-action="AddStore" asp-area="SuperAdmin" asp-controller="Store">Store Add</a></li>
+                      <li><a>Store List</a></li>
+                      <li><a>Store Add</a></li>
                     </ul>
                   </div>
                 </div>
@@ -98,6 +98,9 @@
             </div>
           </div>
         </div>
+      </li>
+      <li class="submenu">
+        <button class="btn btn-danger -i ml-3" (click)="onLogout()"><i class="fas fa-sign-out-alt"></i></button>
       </li>
     </ul>
   </div>
@@ -118,4 +121,3 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-<button class="btn btn-danger" (click)="onLogout()">logout</button>
