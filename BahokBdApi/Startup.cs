@@ -74,33 +74,20 @@ namespace BahokBdApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseHttpsRedirection();
-            app.Use(async (ctx, next) =>
-            {
-                await next();
-                if (ctx.Response.StatusCode == 204)
-                {
-                    ctx.Response.ContentLength = 0;
-                }
-            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseHttpsRedirection();
 
             app.UseCors(builder =>
-         builder.WithOrigins("http://localhost:44301")
-         .AllowAnyHeader()
-         .AllowAnyMethod()
-
-         );
+            builder.WithOrigins("http://localhost:44301").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+            );
 
             app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseAuthentication();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

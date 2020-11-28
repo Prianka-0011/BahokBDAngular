@@ -13,8 +13,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { en_US, NZ_I18N, NgZorroAntdModule } from 'ng-zorro-antd';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzIconModule } from 'ng-zorro-antd/icon';
+//import { NzLayoutModule } from 'ng-zorro-antd/layout';
+//import { NzIconModule } from 'ng-zorro-antd/icon';
 import { UserModule } from './user/user.module';
 import { UserService } from './user/userservice/user.service';
 //import { ToastrModule } from 'ngx-toastr';
@@ -35,9 +35,9 @@ import { UserService } from './user/userservice/user.service';
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule,
-    NgZorroAntdModule,
-    NzLayoutModule,
-    NzIconModule,
+    //NgZorroAntdModule,
+    //NzLayoutModule,
+    //NzIconModule,
     UserModule,
    // ToastrModule
   ],

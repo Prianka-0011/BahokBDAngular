@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
    onSubmit() {
     this.service.register().subscribe(
       (res: any) => {
-        if (res.Succeeded)//Here I make speling mistake that why I caught a undefine error
+        if (res.succeeded)//Here I make speling mistake that why I caught a undefine error
         {
           this.service.formModel.reset();
          // this.toastr.success('Register', 'Successfully');

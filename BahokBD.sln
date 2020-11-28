@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BahokBdApi", "BahokBdApi\BahokBdApi.csproj", "{FE2FA4C7-7F19-4F0A-95A0-0D84BD026391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BahokBDClient", "BahokBDClient\BahokBDClient.csproj", "{6A284AC1-0600-4018-993F-E4599E41D156}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BahokBDClient", "BahokBDClient\BahokBDClient.csproj", "{6A284AC1-0600-4018-993F-E4599E41D156}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

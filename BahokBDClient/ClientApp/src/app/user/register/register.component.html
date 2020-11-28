@@ -9,7 +9,7 @@
         <div class="form-group required">
           <label>UserName</label>
           <input formControlName="UserName" />
-          <label class="text-denger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">This feild is mandetory</label>
+          <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">This feild is mandetory</label>
         </div>
       </div>
       <div class="col-md-6 col-6">
