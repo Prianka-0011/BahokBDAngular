@@ -81,7 +81,7 @@ namespace BahokBdApi
             app.UseHttpsRedirection();
 
             app.UseCors(builder =>
-            builder.WithOrigins("http://localhost:44301").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+            builder.WithOrigins(Configuration["ApplicationSettions:Client_URL"].ToString()).AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
             );
 
             app.UseAuthentication();

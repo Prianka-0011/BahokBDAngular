@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
               case 'DuplicateUserName':
                this.toastr.error('Username is already taken', 'Registration failed.');
                 break;
-
               default:
                this.toastr.error(element.description, 'Registration failed.');
                 break;
