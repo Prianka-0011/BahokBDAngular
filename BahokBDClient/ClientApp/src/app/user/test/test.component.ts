@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-admin',
-    templateUrl: './admin.component.html',
-    styleUrls: ['./admin.component.scss']
+    selector: 'app-test',
+    templateUrl: './test.component.html',
+    styleUrls: ['./test.component.scss']
 })
-/** admin component*/
-export class AdminComponent {
-    /** admin ctor */
+/** test component*/
+export class TestComponent {
+    /** test ctor */
   constructor(private router: Router) {
 
   }

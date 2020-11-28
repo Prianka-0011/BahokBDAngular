@@ -4,6 +4,8 @@ import { UserComponent } from './user.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
+import { AuthGuard } from './auth/auth.guard';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -14,7 +16,9 @@ const routes: Routes = [{
     { path: 'user', component: UserComponent },
     { path: 'user/register', component: RegisterComponent },
     { path: 'user/login', component: LoginComponent },
-    { path: 'admin', component: AdminComponent },
+    { path: 'user/test', component: TestComponent },
+    //{ path: 'user/admin', component: AdminComponent, canActivate: [AuthGuard] },
+    { path: 'user/admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] }
   ]
 }]
 
@@ -28,6 +32,7 @@ export const RoutedComponents = [
   UserComponent,
   RegisterComponent,
   LoginComponent,
-  AdminComponent
+  //AdminComponent,
+  TestComponent
 ];
 
