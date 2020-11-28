@@ -16,23 +16,23 @@ export class LoginComponent implements OnInit {
     UserName: '',
     Password: ''
   }
-  constructor(/*private toastr: ToastrService*/ private service: UserService, private router: Router) {
+  constructor(private toastr: ToastrService, private service: UserService, private router: Router) {
 
     }
     ngOnInit(): void {
       if (localStorage.getItem != null) {
-        this.router.navigateByUrl('/admin');
+       this.router.navigateByUrl('user/admin');
       }
   }
   onSubmit(form: NgForm) {
     this.service.login(form.value).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
-        this.router.navigateByUrl('/admin');
+        this.router.navigateByUrl('user/admin');
       },
       err => {
         if (err.status == 400) {
-          //this.toastr.error('Incurrect username or password', 'Authentication faild')
+          this.toastr.error('Incurrect username or password', 'Authentication faild')
         }
         else {
           console.log(err);

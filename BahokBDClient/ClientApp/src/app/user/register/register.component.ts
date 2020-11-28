@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../userservice/user.service';
+import { ToastrService } from 'ngx-toastr';
 ////import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -12,7 +13,7 @@ import { UserService } from '../userservice/user.service';
 /** register component*/
 export class RegisterComponent implements OnInit {
     /** register ctor */
-  constructor(public service: UserService, private http: HttpClient,/* private toastr: ToastrService */) {
+  constructor(public service: UserService, private http: HttpClient, private toastr: ToastrService ) {
 
     }
   ngOnInit() {
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
         if (res.succeeded)//Here I make speling mistake that why I caught a undefine error
         {
           this.service.formModel.reset();
-         // this.toastr.success('Register', 'Successfully');
+          this.toastr.success('Register', 'Successfully');
 
         }
         else {
@@ -32,11 +33,11 @@ export class RegisterComponent implements OnInit {
           !!res.Errors && res.Errors.forEach(element => {
             switch (element.code) {
               case 'DuplicateUserName':
-              // this.toastr.error('Username is already taken', 'Registration failed.');
+               this.toastr.error('Username is already taken', 'Registration failed.');
                 break;
 
               default:
-              //  this.toastr.error(element.description, 'Registration failed.');
+               this.toastr.error(element.description, 'Registration failed.');
                 break;
             }
           });

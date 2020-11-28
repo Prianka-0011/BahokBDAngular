@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { NgZorroAntdModule, NzLayoutModule, NzIconModule } from 'ng-zorro-antd';
 import { UserComponent } from './user.component';
 import { UserService } from './userservice/user.service';
-//import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { UserService } from './userservice/user.service';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-   // ToastrModule
+    ToastrModule.forRoot()
   ],
   providers: [UserService],
   bootstrap: [UserComponent]
