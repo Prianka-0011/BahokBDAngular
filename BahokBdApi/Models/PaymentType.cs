@@ -9,6 +9,6 @@ namespace BahokBdApi.Models
     {
         public Guid Id { get; set; }
         public string Type { get; set; }
-        public bool? Satus { get; set; }
+        public bool? Status { get; set; }
     }
 }

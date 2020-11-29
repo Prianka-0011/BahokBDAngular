@@ -33,7 +33,11 @@ namespace BahokBdApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<ApplicationSettions>(Configuration.GetSection("ApplicationSettions"));
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            }); 
+
             services.AddDbContext<AuthenticationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BahokDbConn")));
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AuthenticationContext>();

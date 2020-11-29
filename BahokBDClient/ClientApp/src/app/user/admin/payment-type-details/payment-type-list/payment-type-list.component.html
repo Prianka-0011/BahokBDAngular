@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Type List</h2>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <tr *ngFor="let pd of service.list">
+        <td (click)="populateForm(pd)">{{pd.Type}}</td>
+        <td>
+          <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.PMId)"></i>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

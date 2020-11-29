@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from '../auth/auth.interceptor';
 import { AdminComponent } from './admin.component';
+import { PaymentService } from './shared/payment.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AdminComponent } from './admin.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    PaymentService
   ],
   bootstrap: [AdminComponent]
 })
