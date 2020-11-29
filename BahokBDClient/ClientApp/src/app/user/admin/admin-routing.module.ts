@@ -20,5 +20,6 @@ const routes: Routes = [{
 export class AdminRoutingModule {
 }
 export const AdminRoutedComponents = [
-  AdminComponent
+  AdminComponent,
+  PaymentTypeComponent
 ];

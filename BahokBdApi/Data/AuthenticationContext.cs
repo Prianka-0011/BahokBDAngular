@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using BahokBdApi.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,6 @@ namespace BahokBdApi.Data
         {
 
         }
+        public virtual DbSet<PaymentType> PaymentTypes { get; set; }
     }
 }
