@@ -23,6 +23,7 @@ namespace BahokBdApi.Controllers
 
         // GET: api/PaymentTypes
         [HttpGet]
+        [Route("GetPayment")]
         public async Task<ActionResult<IEnumerable<PaymentType>>> GetPaymentTypes()
         {
             return await _context.PaymentTypes.ToListAsync();
@@ -78,6 +79,7 @@ namespace BahokBdApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
+        [Route("PostPayment")]
         public async Task<ActionResult<PaymentType>> PostPaymentType(PaymentType paymentType)
         {
             _context.PaymentTypes.Add(paymentType);

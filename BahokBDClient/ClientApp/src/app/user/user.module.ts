@@ -9,6 +9,8 @@ import { UserComponent } from './user.component';
 import { UserService } from './userservice/user.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { PaymentService } from './admin/payment-type-details/shared/payment.service';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [UserService,
+  providers: [UserService, PaymentService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

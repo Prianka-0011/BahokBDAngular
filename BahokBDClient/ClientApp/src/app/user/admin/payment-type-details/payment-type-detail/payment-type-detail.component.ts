@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PaymentService } from '../../shared/payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import { PaymentService } from '../shared/payment.service';
 
 @Component({
     selector: 'app-payment-type-detail',
@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 /** payment-type-detail component*/
 export class PaymentTypeDetailComponent implements OnInit {
   /** payment-type-detail ctor */
-  constructor(private service: PaymentService,
+  constructor(public service: PaymentService,
     private toastr: ToastrService) {
 
   }
@@ -22,14 +22,15 @@ export class PaymentTypeDetailComponent implements OnInit {
     if (form != null)
       form.form.reset();
     this.service.formData = {
-      Id: '00000000-0000-0000-0000-000000000000',
+      Id: "",
       Type: '',
 
     }
   }
   onSubmit(form: NgForm) {
-    if (this.service.formData.Id == '00000000-0000-0000-0000-000000000000')
+    if (this.service.formData.Id == "")
       this.insertRecord(form);
+
     else
       this.updateRecord(form);
   }

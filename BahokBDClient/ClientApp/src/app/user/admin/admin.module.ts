@@ -7,7 +7,8 @@ import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from '../auth/auth.interceptor';
 import { AdminComponent } from './admin.component';
-import { PaymentService } from './shared/payment.service';
+import { PaymentService } from './payment-type-details/shared/payment.service';
+
 
 @NgModule({
   declarations: [

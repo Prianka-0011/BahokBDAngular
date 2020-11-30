@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { PaymentService } from '../../shared/payment.service';
+
 import { ToastrService } from 'ngx-toastr';
-import { Payment } from '../../shared/payment.class';
+import { Payment } from '../shared/payment.model';
+import { PaymentService } from '../shared/payment.service';
+
 
 @Component({
     selector: 'app-payment-type-list',
@@ -11,7 +13,7 @@ import { Payment } from '../../shared/payment.class';
 /** payment-type-list component*/
 export class PaymentTypeListComponent {
   /** payment-type-list ctor */
-  constructor(private service: PaymentService,
+  constructor(public service: PaymentService,
     private toastr: ToastrService) {
 
   }
