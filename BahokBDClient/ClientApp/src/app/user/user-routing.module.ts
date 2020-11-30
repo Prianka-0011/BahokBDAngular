@@ -17,7 +17,6 @@ const routes: Routes = [{
     { path: 'user/register', component: RegisterComponent },
     { path: 'user/login', component: LoginComponent },
     { path: 'user/test', component: TestComponent },
-    //{ path: 'user/admin', component: AdminComponent, canActivate: [AuthGuard] },
     { path: 'user/admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] }
   ]
 }]

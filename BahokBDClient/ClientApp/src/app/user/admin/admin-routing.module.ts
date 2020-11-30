@@ -13,7 +13,7 @@ const routes: Routes = [{
     { path: 'admin', component: AdminComponent },
     { path: 'admin/typedetails', component: PaymentTypeDetailsComponent },
     { path: 'admin/typedetails/typedetail', component: PaymentTypeDetailComponent },
-    { path: 'admin/typedetails/typelist', component: PaymentTypeListComponent },
+    { path: '/typelist', component: PaymentTypeListComponent },
     
   ]
 }]

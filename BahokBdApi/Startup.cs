@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
 
 namespace BahokBdApi
 {
@@ -33,10 +34,7 @@ namespace BahokBdApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<ApplicationSettions>(Configuration.GetSection("ApplicationSettions"));
-            services.AddControllers().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.PropertyNamingPolicy = null;
-            }); 
+            services.AddControllers();
 
             services.AddDbContext<AuthenticationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BahokDbConn")));
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -85,7 +83,7 @@ namespace BahokBdApi
             app.UseHttpsRedirection();
 
             app.UseCors(builder =>
-            builder.WithOrigins(Configuration["ApplicationSettions:Client_URL"].ToString()).AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+            builder.WithOrigins(Configuration["ApplicationSettions:Client_URL"].ToString()).AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithOrigins()
             );
 
             app.UseAuthentication();

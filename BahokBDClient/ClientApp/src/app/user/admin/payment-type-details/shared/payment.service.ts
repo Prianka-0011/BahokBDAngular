@@ -13,7 +13,7 @@ export class PaymentService {
   list: Payment[];
   postPaymentTypeDetail() {
     //var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-    return this.http.post(this.rootURL + '/PaymentTypes/PostPayment', this.formData/*, { headers: tokenHader }*/);
+    return this.http.post(this.rootURL + '/PaymentTypesProb/PostPayment', this.formData/*, { headers: tokenHader }*/);
   }
   putPaymentTypeDetail() {
     return this.http.put(this.rootURL + '/PaymentDetail/' + this.formData.Id, this.formData);
