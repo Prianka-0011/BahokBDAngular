@@ -47,6 +47,7 @@ namespace BahokBdApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
+        [Route("putpayment")]
         public async Task<IActionResult> PutPaymentType(Guid id, PaymentType paymentType)
         {
             if (id != paymentType.Id)
@@ -79,7 +80,7 @@ namespace BahokBdApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        [Route("PostPayment")]
+        
         public async Task<ActionResult<PaymentType>> PostPaymentType(PaymentType paymentType)
         {
             _context.PaymentTypes.Add(paymentType);

@@ -71,6 +71,7 @@ namespace BahokBdApi.Controllers
                 var securityToken = tokenHandlar.CreateToken(tokenDescriptor);
                 var token = tokenHandlar.WriteToken(securityToken);
                 return Ok(new { token });
+               // return Ok();
             }
             else
             {

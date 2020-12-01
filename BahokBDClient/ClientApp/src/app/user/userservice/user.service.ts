@@ -7,7 +7,7 @@ export class UserService {
   constructor(private fb: FormBuilder, private http: HttpClient) {
 
   }
-  readonly rootURL = 'https://localhost:44393/api';
+  readonly rootURL = 'http://localhost:51846/api';
   formModel = this.fb.group({
     UserName: ['', Validators.required],
     Email: ['', Validators.email],
@@ -37,6 +37,7 @@ export class UserService {
     return this.http.post(this.rootURL + '/ApplicationUser/Register', body);
   }
   login(formData) {
+    console.log("login", formData)
     return this.http.post(this.rootURL + '/ApplicationUser/Login', formData);
   }
 }

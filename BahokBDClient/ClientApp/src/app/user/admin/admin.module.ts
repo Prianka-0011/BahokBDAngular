@@ -29,7 +29,7 @@ import { PaymentService } from './payment-type-details/shared/payment.service';
       useClass: AuthInterceptor,
       multi: true
     },
-    PaymentService
+   // PaymentService
   ],
   bootstrap: [AdminComponent]
 })

@@ -20,8 +20,10 @@ export class RegisterComponent implements OnInit {
     this.service.formModel.reset();
   }
    onSubmit() {
-    this.service.register().subscribe(
-      (res: any) => {
+     this.service.register().subscribe(
+   
+       (res: any) => {
+         console.log("reg",res)
         if (res.succeeded)//Here I make speling mistake that why I caught a undefine error
         {
           this.service.formModel.reset();

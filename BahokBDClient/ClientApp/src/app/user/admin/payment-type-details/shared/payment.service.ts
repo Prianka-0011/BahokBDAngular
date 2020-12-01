@@ -8,23 +8,26 @@ export class PaymentService {
   constructor(private http: HttpClient) {
 
   }
+ 
   formData: Payment;
-  readonly rootURL = 'https://localhost:44393/api';
+  readonly rootURL = 'http://localhost:51846/api';
   list: Payment[];
-  postPaymentTypeDetail() {
+  postPaymentTypeDetail(formData) {
+    //console.log('Post111',this.rootURL + '/PaymentTypes', this.formData);
     //var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-    return this.http.post(this.rootURL + '/PaymentTypesProb/PostPayment', this.formData/*, { headers: tokenHader }*/);
+    return this.http.post(this.rootURL + '/PaymentTypes', formData/*, { headers: tokenHader }*/);
   }
   putPaymentTypeDetail() {
-    return this.http.put(this.rootURL + '/PaymentDetail/' + this.formData.Id, this.formData);
+   
+    return this.http.put(this.rootURL + '/PaymentTypes/' + this.formData.Id, this.formData);
   }
   deletePaymentTypeDetail(id) {
-    return this.http.delete(this.rootURL + '/PaymentDetail/' + id);
+    return this.http.delete(this.rootURL + '/PaymentTypes/' + id);
   }
   refreshList() {
     var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-    //this.http.get(this.rootURL + '/PaymentTypes/GetPayment', { headers: tokenHader })
-    //  .toPromise()
-    //  .then(res => this.list = res as Payment[]);
+    this.http.get(this.rootURL + '/PaymentTypes/GetPayment', { headers: tokenHader })
+      .toPromise()
+      .then(res => this.list = res as Payment[]);
   }
 }

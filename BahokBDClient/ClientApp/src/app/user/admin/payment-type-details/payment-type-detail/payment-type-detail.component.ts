@@ -10,7 +10,8 @@ import { PaymentService } from '../shared/payment.service';
 })
 /** payment-type-detail component*/
 export class PaymentTypeDetailComponent implements OnInit {
-  /** payment-type-detail ctor */
+/** payment-type-detail ctor */
+  
   constructor(public service: PaymentService,
     private toastr: ToastrService) {
 
@@ -24,21 +25,24 @@ export class PaymentTypeDetailComponent implements OnInit {
     this.service.formData = {
       Id: "",
       Type: '',
+      Status: false
 
     }
   }
   onSubmit(form: NgForm) {
-    if (this.service.formData.Id == "")
+    if (this.service.formData.Id == "") {
+      
       this.insertRecord(form);
-
+    }
+      
     else
+      console.log("Id Guid", this.service.formData.Id)
       this.updateRecord(form);
   }
 
   insertRecord(form: NgForm) {
-    this.service.postPaymentTypeDetail().subscribe(
+    this.service.postPaymentTypeDetail(form.value).subscribe(
       res => {
-        debugger;
         this.resetForm(form);
         this.toastr.success('Submitted successfully', 'Payment Detail Register');
         this.service.refreshList();
@@ -50,7 +54,7 @@ export class PaymentTypeDetailComponent implements OnInit {
     )
   }
   updateRecord(form: NgForm) {
-    this.service.postPaymentTypeDetail().subscribe(
+    this.service.putPaymentTypeDetail(form.value).subscribe(
       res => {
         this.resetForm(form);
         this.toastr.info('Submitted successfully', 'Payment Detail Register');

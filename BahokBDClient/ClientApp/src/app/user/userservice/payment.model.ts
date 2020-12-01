@@ -1,5 +1,5 @@
 export class Payment {
-  Id: string;
+  Id: any;
   Type: string;
   Status: boolean;
 }

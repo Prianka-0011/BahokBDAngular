@@ -132,14 +132,17 @@
 #wrapper .sidebar ul li {
   padding: 3px;
 }
+.li-group{
+    margin-left:10px;
+}
 
-  #wrapper .sidebar ul li a {
-    color: #fff;
-    display: block;
-    text-align: left;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
+#wrapper .sidebar ul li a {
+  color: #fff;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
     #wrapper.sidebar ul li a:hover {
       text-decoration: none;

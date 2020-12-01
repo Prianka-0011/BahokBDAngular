@@ -7,7 +7,7 @@
       <tr *ngFor="let pd of service.list">
         <td (click)="populateForm(pd)">{{pd.Type}}</td>
         <td>
-          <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.PMId)"></i>
+          <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.Id)"></i>
         </td>
       </tr>
     </table>

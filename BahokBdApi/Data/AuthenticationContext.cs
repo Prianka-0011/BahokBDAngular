@@ -14,6 +14,6 @@ namespace BahokBdApi.Data
         {
 
         }
-        public virtual DbSet<PaymentType> PaymentTypes { get; set; }
+        public  DbSet<PaymentType> PaymentTypes { get; set; }
     }
 }
