@@ -7,6 +7,7 @@ import { PaymentTypeListComponent } from './payment-type-details/payment-type-li
 import { PaymentBankingDetailsComponent } from './payment-banking-details/payment-banking-details.component';
 import { PaymentBankingListComponent } from './payment-banking-details/payment-banking-list/payment-banking-list.component';
 import { PaymentBankingDetailComponent } from './payment-banking-details/payment-banking-detail/payment-banking-detail.component';
+import { BankBranchDetailsComponent } from './bank-branch-details/bank-branch-details.component';
 
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [{
   children: [
     { path: 'admin/typedetails', component: PaymentTypeDetailsComponent },
     { path: 'admin/bankdetail', component: PaymentBankingDetailsComponent },
+    { path: 'admin/branchdetail', component: BankBranchDetailsComponent },
     
   ]
 }]
@@ -33,5 +35,6 @@ export const AdminRoutedComponents = [
   PaymentTypeDetailComponent,
   PaymentBankingListComponent,
   PaymentBankingDetailComponent,
-  PaymentBankingDetailsComponent 
+  PaymentBankingDetailsComponent,
+  BankBranchDetailsComponent
 ];
