@@ -8,6 +8,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from '../auth/auth.interceptor';
 import { AdminComponent } from './admin.component';
 import { PaymentService } from './payment-type-details/shared/payment.service';
+import { BankingService } from './payment-banking-details/bankshared/banking.service';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { PaymentService } from './payment-type-details/shared/payment.service';
       useClass: AuthInterceptor,
       multi: true
     },
-   // PaymentService
+    PaymentService,
+    BankingService
   ],
   bootstrap: [AdminComponent]
 })

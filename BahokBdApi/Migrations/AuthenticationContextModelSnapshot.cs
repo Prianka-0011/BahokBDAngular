@@ -19,14 +19,30 @@ namespace BahokBdApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("BahokBdApi.Models.PaymentType", b =>
+            modelBuilder.Entity("BahokBdApi.Models.PaymentBank", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("TypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TypeId");
+
+                    b.ToTable("PaymentBanks");
+                });
+
+            modelBuilder.Entity("BahokBdApi.Models.PaymentType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
@@ -232,6 +248,15 @@ namespace BahokBdApi.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("BahokBdApi.Models.PaymentBank", b =>
+                {
+                    b.HasOne("BahokBdApi.Models.PaymentType", "Type")
+                        .WithMany("PaymentBanks")
+                        .HasForeignKey("TypeId");
+
+                    b.Navigation("Type");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -281,6 +306,11 @@ namespace BahokBdApi.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BahokBdApi.Models.PaymentType", b =>
+                {
+                    b.Navigation("PaymentBanks");
                 });
 #pragma warning restore 612, 618
         }

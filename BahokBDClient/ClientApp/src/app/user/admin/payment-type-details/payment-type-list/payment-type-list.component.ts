@@ -13,7 +13,7 @@ import { PaymentService } from '../shared/payment.service';
 /** payment-type-list component*/
 export class PaymentTypeListComponent {
   /** payment-type-list ctor */
-  constructor(public service: PaymentService,
+  constructor(private service: PaymentService,
     private toastr: ToastrService) {
 
   }

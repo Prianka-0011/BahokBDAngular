@@ -25,7 +25,7 @@ import { PaymentService } from './admin/payment-type-details/shared/payment.serv
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [UserService, PaymentService,
+  providers: [UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

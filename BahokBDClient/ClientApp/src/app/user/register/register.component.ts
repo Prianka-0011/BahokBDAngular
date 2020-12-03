@@ -12,8 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 /** register component*/
 export class RegisterComponent implements OnInit {
-    /** register ctor */
-  constructor(public service: UserService, private http: HttpClient, private toastr: ToastrService ) {
+  /** register ctor */
+  constructor(private service: UserService, private http: HttpClient, private toastr: ToastrService) {
 
     }
   ngOnInit() {
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
    
        (res: any) => {
          console.log("reg",res)
-        if (res.succeeded)//Here I make speling mistake that why I caught a undefine error
+        if (res.Succeeded)//Here I make speling mistake that why I caught a undefine error
         {
           this.service.formModel.reset();
           this.toastr.success('Register', 'Successfully');

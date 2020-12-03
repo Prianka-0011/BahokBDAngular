@@ -90,7 +90,7 @@ namespace BahokBdApi
             app.UseHttpsRedirection();
 
             app.UseCors(builder =>
-            builder.WithOrigins("http://localhost:65495").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithOrigins()
+            builder.WithOrigins("http://localhost:65495").AllowAnyMethod().AllowAnyHeader()
             );
 
             app.UseAuthentication();
