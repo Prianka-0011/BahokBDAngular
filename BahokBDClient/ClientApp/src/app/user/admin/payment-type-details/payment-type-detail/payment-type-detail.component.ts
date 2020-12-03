@@ -31,13 +31,15 @@ export class PaymentTypeDetailComponent implements OnInit {
   }
   onSubmit(form: NgForm) {
     if (this.service.formData.Id == "") {
-      
+
       this.insertRecord(form);
     }
-      
-    else
+
+    else {
       console.log("Id Guid", this.service.formData.Id)
       this.updateRecord(form);
+    }
+      
   }
 
   insertRecord(form: NgForm) {

@@ -5,7 +5,7 @@
     <h2>Payment Bank</h2>
   </div>
   <div class="card-body">
-    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
       <input type="hidden" name="Id" [value]="service.formData.Id">
       <div class="row">
         <div class="col-12 col-md-12">
@@ -15,10 +15,9 @@
           </div>
           <div class="form-group">
             <label>Type:</label>
-            <select name="typeId" #typeId="ngModel" [(ngModel)]="service.formData.TypeId" class="form-control">
-              <option disabled>Select Type</option>
-              <option>Choose Type</option>
-              <option *ngFor="let type of service.typelist" value="type.Id">{{type.Type}}</option>
+            <select name="typeId" #typeId="ngModel" [(ngModel)]="service.formData.TypeId" class="form-control">             
+              <option>Choose Type </option>
+              <option *ngFor="let type of service.typelist" value="{{type.Id}}">{{type.Type}}</option>
             </select>
           </div>
           <div class="form-group">

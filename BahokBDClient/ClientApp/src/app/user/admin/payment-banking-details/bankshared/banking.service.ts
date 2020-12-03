@@ -9,36 +9,33 @@ export class BankingService {
 
   }
   readonly rootURL = 'http://localhost:51846/api';
-  formData = {
-    Id:"",
-    TypeId: "",
-    Name:''
-  };
+  formData: Banking;
   typelist: Paymenttypes[];
-  list: Banking[];
+  bankList;
+  //list: Banking[];
   paymentsType() {
     var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     this.http.get(this.rootURL + '/PaymentTypes/GetPayment', { headers: tokenHader })
       .toPromise()
       .then(res => this.typelist = res as Paymenttypes[]);
   }
-  postPaymentBankDetail(formData) {
-    //console.log('Post111',this.rootURL + '/PaymentTypes', this.formData);
-    //var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-    return this.http.post(this.rootURL + '/PaymentBanks/postBank', formData/*, { headers: tokenHader }*/);
+  postPaymentBankDetail() {
+    var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
+    //console.log("pikuformdata", this.formData)
+    return this.http.post(this.rootURL + '/PaymentBanks/postBank', this.formData, { headers: tokenHader });
   }
   putPaymentBankDetail() {
-
-    return this.http.put(this.rootURL + '/PaymentBanks/putBank' + this.formData.Id, this.formData);
+    console.log("putBank", this.formData)
+    return this.http.put(this.rootURL + '/PaymentBanks/'+ this.formData.Id, this.formData);
   }
-  //deletePaymentBankDetail(id) {
-  //  return this.http.delete(this.rootURL + '/PaymentBank/deletepaymentBank' + id);
-  //}
-  getBankList() {
+  deletePaymentBankDetail(id) {
+    return this.http.delete(this.rootURL + '/PaymentBanks/'+ id);
+  }
+  refreshList() {
     var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
    // console.log("promice", toPromise())
-    return this.http.get(this.rootURL + '/PaymentBanks/getBank', { headers: tokenHader })
-      .toPromise();
+    this.http.get(this.rootURL + '/PaymentBanks/getBank', { headers: tokenHader })
+      .toPromise().then(res => this.bankList=res);
     
       
   }

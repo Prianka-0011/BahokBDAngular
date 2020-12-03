@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     }
     ngOnInit(): void {
       if (localStorage.getItem != null) {
-       // this.router.navigateByUrl('user/test');
+        this.router.navigateByUrl('user/admin');
       }
   }
   onSubmit(form: NgForm) {

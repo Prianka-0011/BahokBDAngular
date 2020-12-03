@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BahokBdApi.Data;
 using BahokBdApi.Models;
+using BahokBdApi.ViewModel;
 
 namespace BahokBdApi.Controllers
 {
@@ -58,15 +59,21 @@ namespace BahokBdApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        [Route("putBank")]
-        public async Task<IActionResult> PutPaymentBank(Guid id, PaymentBank paymentBank)
+       
+        public async Task<IActionResult> PutPaymentBank(Guid id, PaymentBankVm vm)
         {
-            if (id != paymentBank.Id)
+            if (id != vm.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(paymentBank).State = EntityState.Modified;
+            PaymentBank result =await _context.PaymentBanks.FindAsync( vm.Id);
+            if (result != null)
+            {
+                result.Name = vm.Name;
+                result.TypeId = vm.TypeId;
+                _context.Entry(result).State = EntityState.Modified;
+            }
+            
 
             try
             {
@@ -92,17 +99,20 @@ namespace BahokBdApi.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         [Route("postBank")]
-        public async Task<ActionResult<PaymentBank>> PostPaymentBank(PaymentBank paymentBank)
+        public async Task<ActionResult<PaymentBank>> PostPaymentBank(PaymentBankVm vm)
         {
-            _context.PaymentBanks.Add(paymentBank);
+            PaymentBank payment = new PaymentBank();
+            payment.Name = vm.Name;
+            payment.TypeId = vm.TypeId;
+            _context.PaymentBanks.Add(payment);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPaymentBank", new { id = paymentBank.Id }, paymentBank);
+            return CreatedAtAction("GetPaymentBank", new { id = vm.Id }, vm);
         }
 
         // DELETE: api/PaymentBanks/5
         [HttpDelete("{id}")]
-        [Route("deleteBank")]
+       
         public async Task<ActionResult<PaymentBank>> DeletePaymentBank(Guid id)
         {
             var paymentBank = await _context.PaymentBanks.FindAsync(id);

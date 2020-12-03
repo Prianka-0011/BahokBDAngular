@@ -5,45 +5,42 @@ import { Banking } from '../bankshared/banking.model';
 import { GetBank } from '../bankshared/get-bank.model';
 
 @Component({
-    selector: 'app-payment-banking-list',
-    templateUrl: './payment-banking-list.component.html',
-    styleUrls: ['./payment-banking-list.component.scss']
+  selector: 'app-payment-banking-list',
+  templateUrl: './payment-banking-list.component.html',
+  styleUrls: ['./payment-banking-list.component.scss']
 })
 /** payment-banking-list component*/
-export class PaymentBankingListComponent implements OnInit{
-/** payment-banking-list ctor */
+export class PaymentBankingListComponent implements OnInit {
+  /** payment-banking-list ctor */
   bankList;
   constructor(private service: BankingService,
     private toastr: ToastrService,) {
   } ngOnInit() {
-    this.refereshList();
-  }
-  refereshList() {
-    this.service.getBankList().then(res => {
-      this.bankList = res;
-      console.log("probprianka", this.bankList);
-    });
-  }
-  
-    
+    this.service.refreshList();
   }
 
-  //populateForm(pd: Banking) {
-  //  this.service.formData = Object.assign({}, pd);
-  //}
+  populateForm(pd: Banking) {
+    this.service.formData = Object.assign({}, pd);
+    console.log("this.service.formData", this.service.formData)
+  }
+  onDelete(Id) {
+    if (this.toastr.warning('Are you want to delete')) {
+      this.service.deletePaymentBankDetail(Id)
+        .subscribe(res => {
+          debugger;
+          this.service.refreshList();
+          this.toastr.warning('Deleted successfully', 'Payment Bank Detail Register');
+        },
+          err => {
+            debugger;
+            console.log(err);
+          })
+    }
+  }
+}
 
-  //onDelete(Id) {
-  //  if (this.toastr.warning('Are you want to delete')) {
-  //    this.service.deletePaymentBankDetail(Id)
-  //      .subscribe(res => {
-  //        debugger;
-  //        this.refreshList();
-  //        this.toastr.warning('Deleted successfully', 'Payment Bank Detail Register');
-  //      },
-  //        err => {
-  //          debugger;
-  //          console.log(err);
-  //        })
-  //  }
-  //}
+
+
+
+
 

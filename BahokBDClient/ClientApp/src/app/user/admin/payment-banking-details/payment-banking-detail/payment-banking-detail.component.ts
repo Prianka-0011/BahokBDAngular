@@ -2,49 +2,56 @@ import { Component, OnInit } from '@angular/core';
 import { BankingService } from '../bankshared/banking.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Type } from '@angular/compiler/src/core';
+
 
 @Component({
-    selector: 'app-payment-banking-detail',
-    templateUrl: './payment-banking-detail.component.html',
-    styleUrls: ['./payment-banking-detail.component.scss']
+  selector: 'app-payment-banking-detail',
+  templateUrl: './payment-banking-detail.component.html',
+  styleUrls: ['./payment-banking-detail.component.scss']
 })
 /** payment-banking-detail component*/
 export class PaymentBankingDetailComponent implements OnInit {
   /** payment-banking-detail ctor */
-  constructor(public service: BankingService, private toastr: ToastrService) {
+  constructor(private service: BankingService, private toastr: ToastrService) {
 
   }
-    ngOnInit() {
-      this.service.paymentsType();
-      this.resetForm();
+  ngOnInit() {
+    this.service.paymentsType();
+    this.resetForm();
+    this.service.refreshList();
   }
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
     this.service.formData = {
-      Id: "",
+      Id: '',
       Name: '',
-      TypeId: "",
+      TypeId: '',
+      Type: ''
     }
   }
   onSubmit(form: NgForm) {
-    if (this.service.formData.Id == "") {
-
+    if (this.service.formData.Id == '') {
+      console.log("formdatacheck", this.service.formData)
       this.insertRecord(form);
+
     }
 
-    else
+    else {
       console.log("Id Guid", this.service.formData.Id)
-    this.updateRecord(form);
+      this.updateRecord(form);
+    }
+    
   }
 
   insertRecord(form: NgForm) {
-    this.service.postPaymentBankDetail(form.value).subscribe(
+    this.service.postPaymentBankDetail().subscribe(
       res => {
+        console.log("successres", res)
         this.resetForm(form);
+        this.service.refreshList();
         this.toastr.success('Submitted successfully', 'Payment Detail Register');
-        this.service.paymentsType();
+        //this.service.paymentsType();
       },
       err => {
         debugger;
@@ -56,8 +63,9 @@ export class PaymentBankingDetailComponent implements OnInit {
     this.service.putPaymentBankDetail().subscribe(
       res => {
         this.resetForm(form);
+        this.service.refreshList();
         this.toastr.info('Submitted successfully', 'Payment Detail Register');
-        this.service.paymentsType();
+        //this.service.paymentsType();
       },
       err => {
         console.log(err);
