@@ -1,4 +1,6 @@
-﻿import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BranchService } from '../branchshared/branch.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-bank-branch-list',
@@ -6,9 +8,13 @@
     styleUrls: ['./bank-branch-list.component.scss']
 })
 /** bank-branch-list component*/
-export class BankBranchListComponent {
-    /** bank-branch-list ctor */
-    constructor() {
+export class BankBranchListComponent implements OnInit {
+  /** bank-branch-list ctor */
+  constructor(private service: BranchService,
+    private toastr: ToastrService,) {
 
+    }
+    ngOnInit(): void {
+      this.service.refreshList();
     }
 }

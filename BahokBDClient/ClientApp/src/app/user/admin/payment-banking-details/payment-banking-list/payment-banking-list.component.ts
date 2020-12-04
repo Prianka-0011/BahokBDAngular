@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BankingService } from '../bankshared/banking.service';
 import { ToastrService } from 'ngx-toastr';
 import { Banking } from '../bankshared/banking.model';
-import { GetBank } from '../bankshared/get-bank.model';
+
 
 @Component({
   selector: 'app-payment-banking-list',

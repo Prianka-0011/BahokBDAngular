@@ -16,16 +16,38 @@ namespace BahokBdApi.Controllers
     {
         private readonly AuthenticationContext _context;
 
+
         public BankBranchesController(AuthenticationContext context)
         {
             _context = context;
         }
+        [HttpGet]
+        [Route("getBank")]
+        public System.Object GetPaymentBanks()
+        {
+            //var result = _context.PaymentBanks.Include(c => c.Type).AsQueryable();
+            var result = _context.PaymentBanks.Include(c=>c.Type).ToList();
 
+            return result;
+        }
         // GET: api/BankBranches
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BankBranch>>> GetBankBranchs()
+        [Route("getBranch")]
+        public System.Object GetBankBranch()
         {
-            return await _context.BankBranchs.ToListAsync();
+            //var result = _context.PaymentBanks.Include(c => c.Type).AsQueryable();
+            var result = _context.BankBranchs.Include(c => c.PaymentBank).Select(x => new
+            {
+
+                x.Id,
+                x.Name,
+                BankName = x.PaymentBank.Name,
+                x.PaymentBankId,
+                x.RoutingName
+
+            }).ToList();
+
+            return result;
         }
 
         // GET: api/BankBranches/5

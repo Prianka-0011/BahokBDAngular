@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 /** register component*/
 export class RegisterComponent implements OnInit {
   /** register ctor */
-  constructor(public service: UserService, private http: HttpClient, private toastr: ToastrService) {
+  constructor(private service: UserService, private http: HttpClient, private toastr: ToastrService) {
 
     }
   ngOnInit() {

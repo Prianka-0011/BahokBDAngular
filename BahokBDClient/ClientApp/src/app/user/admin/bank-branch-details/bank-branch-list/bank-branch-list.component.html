@@ -1,1 +1,17 @@
-﻿<div style="border: 1px solid red">bank-branch-list Component</div>
+<div class="card">
+  <div class="card-header">
+    <h2>Type List</h2>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <tr *ngFor="let pd of service.branchList">
+        <td (click)="populateForm(pd)">{{pd.Name}}</td>
+        <td (click)="populateForm(pd)">{{pd.BankName}}</td>
+        <td (click)="populateForm(pd)">{{pd.RoutingName}}</td>
+        <td>
+          <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.Id)"></i>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
