@@ -13,7 +13,7 @@ import { Banking } from '../bankshared/banking.model';
 export class PaymentBankingListComponent implements OnInit {
   /** payment-banking-list ctor */
   bankList;
-  constructor(private service: BankingService,
+  constructor(public service: BankingService,
     private toastr: ToastrService,) {
   } ngOnInit() {
     this.service.refreshList();

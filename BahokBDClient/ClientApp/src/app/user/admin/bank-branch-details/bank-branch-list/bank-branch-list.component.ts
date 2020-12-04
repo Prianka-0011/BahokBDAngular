@@ -10,8 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 /** bank-branch-list component*/
 export class BankBranchListComponent implements OnInit {
   /** bank-branch-list ctor */
-  constructor(private service: BranchService,
-    private toastr: ToastrService,) {
+  constructor(public service: BranchService,
+    private toastr: ToastrService) {
 
     }
     ngOnInit(): void {

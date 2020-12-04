@@ -1,1 +1,32 @@
-﻿<div style="border: 1px solid red">bank-branch-detail Component</div>
+<div class="card">
+  <div class="card-header">
+    <h2>Payment Bank</h2>
+  </div>
+  <div class="card-body">
+    <form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
+      <input type="hidden" name="Id" [value]="service.formData.Id">
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="form-group">
+            <label> Bank Branch</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="service.formData.Name" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label> Routing </label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="service.formData.RoutingName" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label>Type:</label>
+            <select name="typeId" #typeId="ngModel" [(ngModel)]="service.formData.PaymentBankId" class="form-control">
+              <option>Choose Type </option>
+              <option *ngFor="let bank of service.bankList" value="{{bank.Id}}">{{bank.Name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-sm " type="submit" [disabled]="form.invalid"><i class="fas fa-database"></i> Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

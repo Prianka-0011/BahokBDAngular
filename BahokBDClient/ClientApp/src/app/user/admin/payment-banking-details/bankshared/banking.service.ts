@@ -18,6 +18,7 @@ export class BankingService {
     this.http.get(this.rootURL + '/PaymentTypes/GetPayment', { headers: tokenHader })
       .toPromise()
       .then(res => this.typelist = res as Paymenttypes[]);
+    
   }
   postPaymentBankDetail() {
     var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });

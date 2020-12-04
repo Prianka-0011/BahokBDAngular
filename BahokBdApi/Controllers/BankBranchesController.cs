@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BahokBdApi.Data;
 using BahokBdApi.Models;
+using BahokBdApi.ViewModel;
 
 namespace BahokBdApi.Controllers
 {
@@ -21,15 +22,21 @@ namespace BahokBdApi.Controllers
         {
             _context = context;
         }
-        [HttpGet]
-        [Route("getBank")]
-        public System.Object GetPaymentBanks()
-        {
-            //var result = _context.PaymentBanks.Include(c => c.Type).AsQueryable();
-            var result = _context.PaymentBanks.Include(c=>c.Type).ToList();
+        //[HttpGet]
+        //[Route("getBank")]
+        //public System.Object GetPaymentBanks()
+        //{
+        //    //var result = _context.PaymentBanks.Include(c => c.Type).AsQueryable();
+        //    var result = _context.PaymentBanks.Select(x => new
+        //    {
 
-            return result;
-        }
+        //        x.Id,
+        //        x.Name,
+        //    }).ToList();
+
+
+        //    return result;
+        //}
         // GET: api/BankBranches
         [HttpGet]
         [Route("getBranch")]
@@ -68,14 +75,20 @@ namespace BahokBdApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBankBranch(Guid id, BankBranch bankBranch)
+        public async Task<IActionResult> PutBankBranch(Guid id, BankBranchVm vm)
         {
-            if (id != bankBranch.Id)
+            if (id != vm.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(bankBranch).State = EntityState.Modified;
+            BankBranch result = await _context.BankBranchs.FindAsync(vm.Id);
+            if (result!=null)
+            {
+                result.Name = vm.Name;
+                result.PaymentBankId = vm.PaymentBankId;
+                result.RoutingName = vm.RoutingName;
+            }
+            _context.Entry(result).State = EntityState.Modified;
 
             try
             {
@@ -100,12 +113,16 @@ namespace BahokBdApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<BankBranch>> PostBankBranch(BankBranch bankBranch)
+        public async Task<ActionResult<BankBranch>> PostBankBranch(BankBranchVm vm)
         {
+            BankBranch bankBranch = new BankBranch();
+            bankBranch.Name = vm.Name;
+            bankBranch.PaymentBankId = vm.PaymentBankId;
+            bankBranch.RoutingName = vm.RoutingName;
             _context.BankBranchs.Add(bankBranch);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBankBranch", new { id = bankBranch.Id }, bankBranch);
+            return CreatedAtAction("GetBankBranch", new { id = vm.Id }, bankBranch);
         }
 
         // DELETE: api/BankBranches/5

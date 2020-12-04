@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 /** payment-banking-detail component*/
 export class PaymentBankingDetailComponent implements OnInit {
   /** payment-banking-detail ctor */
-  constructor(private service: BankingService, private toastr: ToastrService) {
+  constructor(public service: BankingService, private toastr: ToastrService) {
 
   }
   ngOnInit() {

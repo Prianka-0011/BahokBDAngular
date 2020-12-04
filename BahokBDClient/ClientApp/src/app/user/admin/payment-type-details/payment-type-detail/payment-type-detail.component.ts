@@ -12,7 +12,7 @@ import { PaymentService } from '../shared/payment.service';
 export class PaymentTypeDetailComponent implements OnInit {
 /** payment-type-detail ctor */
 
-  constructor(private service: PaymentService,
+  constructor(public service: PaymentService,
     private toastr: ToastrService) {
 
   }

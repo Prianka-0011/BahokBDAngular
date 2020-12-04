@@ -31,7 +31,9 @@ import { BankingService } from './payment-banking-details/bankshared/banking.ser
       multi: true
     },
     PaymentService,
+    BankingService,
     BankingService
+    
   ],
   bootstrap: [AdminComponent]
 })
