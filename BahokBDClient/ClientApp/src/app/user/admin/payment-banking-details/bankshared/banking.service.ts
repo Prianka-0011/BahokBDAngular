@@ -12,7 +12,7 @@ export class BankingService {
   formData: Banking;
   typelist: Paymenttypes[];
   bankList;
-  //list: Banking[];
+  list: Banking[];
   paymentsType() {
     var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     this.http.get(this.rootURL + '/PaymentTypes/GetPayment', { headers: tokenHader })
@@ -21,8 +21,8 @@ export class BankingService {
   }
   postPaymentBankDetail() {
     var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-    //console.log("pikuformdata", this.formData)
-    return this.http.post(this.rootURL + '/PaymentBanks/postBank', this.formData, { headers: tokenHader });
+    console.log("pikuformdata", this.formData)
+    return this.http.post(this.rootURL + '/PaymentBanks', this.formData, { headers: tokenHader });
   }
   putPaymentBankDetail() {
     console.log("putBank", this.formData)

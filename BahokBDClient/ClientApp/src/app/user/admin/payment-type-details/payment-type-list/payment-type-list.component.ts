@@ -26,7 +26,7 @@ export class PaymentTypeListComponent {
   }
 
   onDelete(Id) {
-    if (confirm('Are you sure to delete this record ?')) {
+    if (this.toastr.warning('Are you want to delete')) {
       this.service.deletePaymentTypeDetail(Id)
         .subscribe(res => {
           debugger;

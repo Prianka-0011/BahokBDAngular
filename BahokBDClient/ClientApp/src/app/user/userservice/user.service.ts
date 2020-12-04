@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UserService {
   constructor(private fb: FormBuilder, private http: HttpClient) {
 

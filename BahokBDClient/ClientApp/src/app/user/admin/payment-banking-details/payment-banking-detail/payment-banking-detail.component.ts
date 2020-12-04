@@ -24,14 +24,14 @@ export class PaymentBankingDetailComponent implements OnInit {
     if (form != null)
       form.form.reset();
     this.service.formData = {
-      Id: '',
+      Id: '00000000-0000-0000-0000-000000000000',
       Name: '',
       TypeId: '',
-      Type: ''
+      Type: 'null'
     }
   }
   onSubmit(form: NgForm) {
-    if (this.service.formData.Id == '') {
+    if (this.service.formData.Id == '00000000-0000-0000-0000-000000000000') {
       console.log("formdatacheck", this.service.formData)
       this.insertRecord(form);
 

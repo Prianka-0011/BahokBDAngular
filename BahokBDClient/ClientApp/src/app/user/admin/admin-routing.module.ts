@@ -8,6 +8,8 @@ import { PaymentBankingDetailsComponent } from './payment-banking-details/paymen
 import { PaymentBankingListComponent } from './payment-banking-details/payment-banking-list/payment-banking-list.component';
 import { PaymentBankingDetailComponent } from './payment-banking-details/payment-banking-detail/payment-banking-detail.component';
 import { BankBranchDetailsComponent } from './bank-branch-details/bank-branch-details.component';
+import { BankBranchDetailComponent } from './bank-branch-details/bank-branch-detail/bank-branch-detail.component';
+import { BankBranchListComponent } from './bank-branch-details/bank-branch-list/bank-branch-list.component';
 
 
 
@@ -36,5 +38,8 @@ export const AdminRoutedComponents = [
   PaymentBankingListComponent,
   PaymentBankingDetailComponent,
   PaymentBankingDetailsComponent,
-  BankBranchDetailsComponent
+  BankBranchDetailsComponent,
+  BankBranchDetailComponent,
+  BankBranchListComponent
+
 ];
