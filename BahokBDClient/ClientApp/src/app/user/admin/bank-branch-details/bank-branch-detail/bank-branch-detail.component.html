@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h2>Payment Bank</h2>
+    <h2> Bank Branch</h2>
   </div>
   <div class="card-body">
     <form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
@@ -13,7 +13,7 @@
           </div>
           <div class="form-group">
             <label> Routing </label>
-            <input type="text" name="name" #name="ngModel" [(ngModel)]="service.formData.RoutingName" class="form-control" required />
+            <input type="text" name="routingName" #routingName="ngModel" [(ngModel)]="service.formData.RoutingName" class="form-control" required />
           </div>
           <div class="form-group">
             <label>Type:</label>
