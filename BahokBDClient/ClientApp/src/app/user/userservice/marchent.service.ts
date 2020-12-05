@@ -64,25 +64,41 @@ export class MarchentService {
   // // console.log("this.routingNo ", _this.routingNo )
   //}
   register() {
-    var body = {
-      UserName: this.formModel.value.UserName,
-      FullName: this.formModel.value.UserName,
-      Email: this.formModel.value.Email,
-      Phone: this.formModel.value.Phone,
-      Image: this.imageFileToUpload,
-      Logo: this.logoFileToUpload,
-      BusinessName: this.formModel.value.BusinessName,
-      BusinessLink: this.formModel.value.BusinessLink,
-      BusinessAddress: this.formModel.value.BusinessAddress,
-      AccountName: this.formModel.value.AccountName,
-      AccountNumber: this.formModel.value.AccountNumber,
-      PayTypeId: this.formModel.value.PayTypeId,
-      PayBankId: this.formModel.value.PayBankId,
-      BranchId: this.formModel.value.BranchId,
-      RoutingName: this.formModel.value.RoutingName,
+    const formData = new FormData();
+    formData.append('UserName', this.formModel.value.UserName);
+    formData.append('FullName', this.formModel.value.FullName);
+    formData.append('Email', this.formModel.value.Email);
+    formData.append('Phone', this.formModel.value.Phone);
+    formData.append('Image', this.imageFileToUpload, this.imageFileToUpload.name);
+    formData.append('Logo', this.logoFileToUpload, this.logoFileToUpload.name);
+    formData.append('BusinessName', this.formModel.value.BusinessName);
+    formData.append('BusinessLink', this.formModel.value.BusinessLink);
+    formData.append('BusinessAddress', this.formModel.value.BusinessAddress);
+    formData.append('AccountName', this.formModel.value.AccountName);
+    formData.append('AccountNumber', this.formModel.value.AccountNumber);
+    formData.append('PayTypeId', this.formModel.value.PayTypeId);
+    formData.append('PayBankId', this.formModel.value.PayBankId);
+    formData.append('BranchId', this.formModel.value.BranchId);
+    formData.append('RoutingName', this.formModel.value.RoutingName);
+    //var body = {
+    //  UserName: this.formModel.value.UserName,
+    //  FullName: this.formModel.value.FullName,
+    //  Email: this.formModel.value.Email,
+    //  Phone: this.formModel.value.Phone,
+    //  Image: this.imageFileToUpload,
+    //  Logo: this.logoFileToUpload,
+    //  BusinessName: this.formModel.value.BusinessName,
+    //  BusinessLink: this.formModel.value.BusinessLink,
+    //  BusinessAddress: this.formModel.value.BusinessAddress,
+    //  AccountName: this.formModel.value.AccountName,
+    //  AccountNumber: this.formModel.value.AccountNumber,
+    //  PayTypeId: this.formModel.value.PayTypeId,
+    //  PayBankId: this.formModel.value.PayBankId,
+    //  BranchId: this.formModel.value.BranchId,
+    //  RoutingName: this.formModel.value.RoutingName,
       
-    }
-    console.log("body", body)
-    return this.http.post(this.rootURL + '/Marchents', body);
+    //}
+    // console.log("body", body)
+    return this.http.post(this.rootURL + '/Marchents', formData);
   }
 }

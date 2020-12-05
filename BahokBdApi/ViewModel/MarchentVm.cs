@@ -18,8 +18,8 @@ namespace BahokBdApi.ViewModel
         public string BusinessLink { get; set; }
         public string BusinessAddress { get; set; }
         public string AccountName { get; set; }
-        public string Image { get; set; }
-        public string Logo { get; set; }
+        public IFormFile Image { get; set; }
+        public IFormFile Logo { get; set; }
         public string AccountNumber { get; set; }
         public Guid PayTypeId { get; set; }
         public Guid PayBankId { get; set; }
