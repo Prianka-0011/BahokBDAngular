@@ -43,18 +43,13 @@ namespace BahokBdApi.Controllers
 
         // GET: api/PaymentBanks/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<PaymentBank>> GetPaymentBank(Guid id)
-        {
-            var paymentBank = await _context.PaymentBanks.FindAsync(id);
 
-            if (paymentBank == null)
-            {
-                return NotFound();
-            }
+        public List<PaymentBank> GetPaymentBank(Guid id)
+        {
+            var paymentBank = _context.PaymentBanks.Where(c => c.TypeId == id).ToList();
 
             return paymentBank;
         }
-
         // PUT: api/PaymentBanks/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

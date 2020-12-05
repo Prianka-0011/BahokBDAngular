@@ -10,6 +10,7 @@ import { UserService } from './userservice/user.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { PaymentService } from './admin/payment-type-details/shared/payment.service';
+import { MarchentService } from './userservice/marchent.service';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { PaymentService } from './admin/payment-type-details/shared/payment.serv
     ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
-  providers: [UserService,
+  providers: [UserService, MarchentService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

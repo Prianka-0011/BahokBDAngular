@@ -101,6 +101,7 @@ namespace BahokBdApi
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

@@ -59,16 +59,16 @@ namespace BahokBdApi.Controllers
 
         // GET: api/BankBranches/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BankBranch>> GetBankBranch(Guid id)
+        public List<BankBranch> GetBankBranch(Guid id)
         {
-            var bankBranch = await _context.BankBranchs.FindAsync(id);
+            var paymentBank = _context.BankBranchs.Where(c => c.PaymentBankId == id).ToList();
 
-            if (bankBranch == null)
-            {
-                return NotFound();
-            }
+            //if (paymentBank == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return bankBranch;
+            return paymentBank;
         }
 
         // PUT: api/BankBranches/5
