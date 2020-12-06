@@ -21,15 +21,15 @@ export class ChargeDetailComponent {
     if (form != null)
       form.form.reset();
     this.service.formData = {
-      Id: "",
+      Id: "00000000-0000-0000-0000-000000000000",
       Location:"",
-      BaseCharge: null,
-      IncreaseChargePerKg: null
+      BaseCharge: "",
+      IncreaseChargePerKg: ""
 
     }
   }
   onSubmit(form: NgForm) {
-    if (this.service.formData.Id == "") {
+    if (this.service.formData.Id == "00000000-0000-0000-0000-000000000000") {
 
       this.insertRecord(form);
     }

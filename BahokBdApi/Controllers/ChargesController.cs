@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BahokBdApi.Data;
 using BahokBdApi.Models;
+using BahokBdApi.ViewModel;
 
 namespace BahokBdApi.Controllers
 {
@@ -78,8 +79,12 @@ namespace BahokBdApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Charge>> PostCharge(Charge charge)
+        public async Task<ActionResult<ChargeVm>> PostCharge(ChargeVm vm)
         {
+            Charge charge = new Charge();
+            charge.Location = vm.Location;
+            charge.BaseCharge= Convert.ToDecimal(vm.BaseCharge);
+            charge.IncreaseChargePerKg= Convert.ToDecimal(vm.IncreaseChargePerKg);
             _context.Charges.Add(charge);
             await _context.SaveChangesAsync();
 
