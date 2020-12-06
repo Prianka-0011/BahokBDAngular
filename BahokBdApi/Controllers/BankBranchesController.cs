@@ -50,8 +50,7 @@ namespace BahokBdApi.Controllers
                 x.Name,
                 BankName = x.PaymentBank.Name,
                 x.PaymentBankId,
-                x.RoutingName
-
+               
             }).ToList();
 
             return result;
@@ -86,7 +85,7 @@ namespace BahokBdApi.Controllers
             {
                 result.Name = vm.Name;
                 result.PaymentBankId = vm.PaymentBankId;
-                result.RoutingName = vm.RoutingName;
+               
             }
             _context.Entry(result).State = EntityState.Modified;
 
@@ -118,7 +117,7 @@ namespace BahokBdApi.Controllers
             BankBranch bankBranch = new BankBranch();
             bankBranch.Name = vm.Name;
             bankBranch.PaymentBankId = vm.PaymentBankId;
-            bankBranch.RoutingName = vm.RoutingName;
+            
             _context.BankBranchs.Add(bankBranch);
             await _context.SaveChangesAsync();
 

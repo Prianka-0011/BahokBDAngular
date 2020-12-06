@@ -15,9 +15,11 @@ namespace BahokBdApi.Data
 
         }
         public virtual DbSet<BankBranch> BankBranchs { get; set; }
+        public virtual DbSet<Charge> Charges { get; set; }
+        public virtual DbSet<Marchent> Marchents { get; set; }
+        public virtual DbSet<MarchentCharge> MarchentCharges { get; set; }
+        public virtual DbSet<MarchentPayDetail> MarchentPayDetails { get; set; }
         public virtual DbSet<PaymentBank> PaymentBanks { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
-        public virtual DbSet<Marchent> Marchents { get; set; }
-        public virtual DbSet<MarchentPayDetail> MarchentPayDetails { get; set; }
     }
 }

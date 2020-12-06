@@ -1,12 +1,13 @@
 <div class="card">
   <div class="card-header">
-    <h2>Bank List</h2>
+    <h2>Charge List</h2>
   </div>
   <div class="card-body">
     <table class="table table-hover">
-      <tr *ngFor="let pd of service.bankList">
-        <td (click)="populateForm(pd)">{{pd.Name}}</td>
-        <td (click)="populateForm(pd)">{{pd.Type}}</td>
+      <tr *ngFor="let pd of service.chargeList">
+        <td (click)="populateForm(pd)">{{pd.Location}}</td>
+        <td (click)="populateForm(pd)">{{pd.BaseCharge}}</td>
+        <td (click)="populateForm(pd)">{{pd.IncreaseChargePerKg}}</td>
         <td>
           <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.Id)"></i>
         </td>

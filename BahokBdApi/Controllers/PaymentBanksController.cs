@@ -23,10 +23,27 @@ namespace BahokBdApi.Controllers
         }
 
         // GET: api/PaymentBanks
-        
+        [Route("getBankBranch")]
+        public System.Object GetPaymentBanksForSelectList()
+        {
+            var physicalType = Guid.Parse("beb41e1a-93aa-4745-8fa8-08d899fbb4b9");
+            //var result = _context.PaymentBanks.Include(c => c.Type).AsQueryable();
+            var result = _context.PaymentBanks.Where(d => d.TypeId == physicalType).Include(c => c.Type).Select(x => new
+            {
+
+                x.Id,
+                x.Name,
+                Type = x.Type.Type,
+                x.TypeId
+
+            }).ToList();
+
+            return result;
+        }
         [Route("getBank")]
         public System.Object GetPaymentBanks()
         {
+            
             //var result = _context.PaymentBanks.Include(c => c.Type).AsQueryable();
             var result = _context.PaymentBanks.Include(c => c.Type).Select(x => new
             {

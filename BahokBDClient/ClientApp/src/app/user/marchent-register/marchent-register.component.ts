@@ -51,7 +51,7 @@ export class MarchentRegisterComponent implements OnInit {
     console.log("select", this.service.selectTypeId)
   }
   getBankListByTypeId() {
-    if (this.service.selectTypeId == '93de69ac-2f15-48d2-d8ed-08d89748d7af') {
+    if (this.service.selectTypeId == 'beb41e1a-93aa-4745-8fa8-08d899fbb4b9') {
       this.service.hideBranch = true;
     }
     else {

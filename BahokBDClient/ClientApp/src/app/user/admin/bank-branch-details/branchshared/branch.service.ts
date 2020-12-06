@@ -14,7 +14,7 @@ export class BranchService {
   readonly rootURL = 'http://localhost:51846/api';
   paymentbankList() {
     var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-    this.http.get(this.rootURL + '/PaymentBanks/getBank', { headers: tokenHader })
+    this.http.get(this.rootURL + '/PaymentBanks/getBankBranch', { headers: tokenHader })
       .toPromise().then(res => this.bankList = res);
       console.log("payment", this.bankList)
   }
