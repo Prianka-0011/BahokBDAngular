@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using BahokBdApi.Data;
 using BahokBdApi.Models;
 using BahokBdApi.ViewModel;
+using Microsoft.AspNetCore.Cors;
 
 namespace BahokBdApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ChargesController : ControllerBase
     {
         private readonly AuthenticationContext _context;
@@ -24,9 +26,19 @@ namespace BahokBdApi.Controllers
 
         // GET: api/Charges
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Charge>>> GetCharges()
+        public System.Object GetCharges()
         {
-            return await _context.Charges.ToListAsync();
+            var result = _context.Charges.Select(x => new
+            {
+
+                x.Id,
+                x.Location,
+                BaseCharge = x.BaseCharge.ToString(),
+                IncreaseChargePerKg=  x.IncreaseChargePerKg.ToString(),
+
+            }).ToList();
+
+            return result;
         }
 
         // GET: api/Charges/5
@@ -42,17 +54,21 @@ namespace BahokBdApi.Controllers
 
             return charge;
         }
-
         // PUT: api/Charges/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCharge(Guid id, Charge charge)
+     
+        public async Task<IActionResult> PutCharge(Guid id, ChargeVm vm)
         {
-            if (id != charge.Id)
+            if (id != vm.Id)
             {
                 return BadRequest();
             }
+            Charge charge =await _context.Charges.FindAsync(vm.Id);
+            charge.Location = vm.Location;
+            charge.BaseCharge = Convert.ToDecimal(vm.BaseCharge);
+            charge.IncreaseChargePerKg = Convert.ToDecimal(vm.IncreaseChargePerKg);
 
             _context.Entry(charge).State = EntityState.Modified;
 
@@ -79,7 +95,8 @@ namespace BahokBdApi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<ChargeVm>> PostCharge(ChargeVm vm)
+       
+        public async Task<ActionResult<ChargeVm>> PostCharge([FromBody] ChargeVm vm)
         {
             Charge charge = new Charge();
             charge.Location = vm.Location;

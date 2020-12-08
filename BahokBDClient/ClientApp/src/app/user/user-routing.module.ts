@@ -13,7 +13,7 @@ import { MarchentRegisterComponent } from './marchent-register/marchent-register
 const routes: Routes = [{
   path: '', component:UserComponent,
   children: [
-    { path: '', component: RegisterComponent },
+    { path: '', component: MarchentRegisterComponent},
     { path: 'user/marchent', component: MarchentRegisterComponent },
     { path: 'user', component: UserComponent },
     { path: 'user/register', component: RegisterComponent },

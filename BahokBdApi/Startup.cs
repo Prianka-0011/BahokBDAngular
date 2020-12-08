@@ -65,7 +65,13 @@ namespace BahokBdApi
                 o.MultipartBodyLengthLimit = int.MaxValue;
                 o.MemoryBufferThreshold = int.MaxValue;
             });
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod().AllowCredentials()
+                    .AllowAnyHeader().WithOrigins("http://localhost:65495"));
+            });
 
             //JWT Authentication
             var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettions:JWT_Secret"].ToString());//Ancoding=using System.Text;
@@ -98,9 +104,7 @@ namespace BahokBdApi
             }
             app.UseHttpsRedirection();
 
-            app.UseCors(builder =>
-            builder.WithOrigins("http://localhost:65495").AllowAnyMethod().AllowAnyHeader()
-            );
+            app.UseCors("CorsPolicy");
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {

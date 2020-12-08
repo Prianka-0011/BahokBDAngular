@@ -14,7 +14,8 @@ export class ChargeService {
     //console.log('Post111',this.rootURL + '/PaymentTypes', this.formData);
     //var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
     console.log("charge", this.formData)
-    return this.http.post(this.rootURL + '/Charges', this.formData/*, { headers: tokenHader }*/);
+    var body = { ...this.formData };
+    return this.http.post(this.rootURL + '/Charges', body/*, { headers: tokenHader }*/);
   }
   putChargeDetail() {
 

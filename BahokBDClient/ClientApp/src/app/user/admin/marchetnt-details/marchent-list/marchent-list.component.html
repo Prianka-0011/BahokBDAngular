@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Charge List</h2>
+  </div>
+  <div class="card-body">
+    <table class="table table-scripted">
+      <tr>
+        <th>Full Name</th>
+        <th>User Name</th>
+        <th> Email</th>
+        <th> Phone</th>
+        <!--<th> Business Name</th>
+        <th> Business Address</th>
+        <th> Account Name</th>
+        <th> Account Number</th>
+        <th> Create DateTime</th>-->
+        <th> Image</th>
+        <th> Logo</th>
+        <th> Status</th>
+        <th> Action</th>
+      </tr>
+      <tr *ngFor="let pd of service.marchentList">
+        <td (click)="populateForm(pd)">{{pd.FullName}}</td>
+        <td (click)="populateForm(pd)">{{pd.UserName}}</td>
+        <td (click)="populateForm(pd)">{{pd.Email}}</td>
+        <td (click)="populateForm(pd)">{{pd.Phone}}</td>
+        <!--<td (click)="populateForm(pd)">{{pd.BusinessName}}</td>
+  <td (click)="populateForm(pd)">{{pd.BusinessAddress}}</td>
+  <td (click)="populateForm(pd)">{{pd.AccountName}}</td>
+  <td (click)="populateForm(pd)">{{pd.AccountNumber}}</td>
+  <td (click)="populateForm(pd)">{{pd.CreateDateTime}}</td>-->
+        <td (click)="populateForm(pd)">
+          <img style="height:50px;width:50px; border-radius:25px" src="/assets/images/{{pd.Image}}" />
+        </td>
+        <td (click)="populateForm(pd)">
+          <img style="height:50px;width:50px; border-radius:25px" src="/assets/images/{{pd.Logo}}" />
+        </td>
+        <td (click)="populateForm(pd)">
+        <span>Disable</span>
+        </td>
+        <!--<td *ngIf="{{pd.Status}}==1" (click)="populateForm(pd)">Enable</td>-->
+        <td>
+          <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.Id)"></i>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,4 +1,11 @@
-
+table tr th{
+    font-size:12px;
+    font-weight:bold;
+}
+table tr td {
+  font-size: 12px;
+  
+}
 .wrapper1 {
   height: 42em;
 

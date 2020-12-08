@@ -22,7 +22,7 @@ export class ChargeDetailComponent {
       form.form.reset();
     this.service.formData = {
       Id: "00000000-0000-0000-0000-000000000000",
-      Location:"",
+      Location: "",
       BaseCharge: "",
       IncreaseChargePerKg: ""
 

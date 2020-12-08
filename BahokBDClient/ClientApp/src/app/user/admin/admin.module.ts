@@ -9,6 +9,8 @@ import { AuthInterceptor } from '../auth/auth.interceptor';
 import { AdminComponent } from './admin.component';
 import { PaymentService } from './payment-type-details/shared/payment.service';
 import { BankingService } from './payment-banking-details/bankshared/banking.service';
+import { BranchService } from './bank-branch-details/branchshared/branch.service';
+import { MarchentDetailService } from './marchetnt-details/marchentshared/marchent-detail.service';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { BankingService } from './payment-banking-details/bankshared/banking.ser
     },
     PaymentService,
     BankingService,
-    BankingService
+    BranchService,
+    MarchentDetailService
+
     
   ],
   bootstrap: [AdminComponent]

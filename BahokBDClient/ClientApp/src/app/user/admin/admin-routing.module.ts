@@ -13,6 +13,9 @@ import { BankBranchListComponent } from './bank-branch-details/bank-branch-list/
 import { ChargeDetailsComponent } from './charge-details/charge-details.component';
 import { ChargeListComponent } from './charge-details/charge-list/charge-list.component';
 import { ChargeDetailComponent } from './charge-details/charge-detail/charge-detail.component';
+import { MarchetntDetailsComponent } from './marchetnt-details/marchetnt-details.component';
+import { MarchentListComponent } from './marchetnt-details/marchent-list/marchent-list.component';
+import { MarchenDetailComponent } from './marchetnt-details/marchen-detail/marchen-detail.component';
 
 
 
@@ -23,6 +26,7 @@ const routes: Routes = [{
     { path: 'admin/bankdetail', component: PaymentBankingDetailsComponent },
     { path: 'admin/branchdetail', component: BankBranchDetailsComponent },
     { path: 'admin/charge', component: ChargeDetailsComponent },
+    { path: 'admin/marchent', component: MarchetntDetailsComponent },
     
   ]
 }]
@@ -47,6 +51,8 @@ export const AdminRoutedComponents = [
   BankBranchListComponent,
   ChargeDetailsComponent,
   ChargeListComponent,
-  ChargeDetailComponent
-
+  ChargeDetailComponent,
+  MarchentListComponent,
+  MarchetntDetailsComponent,
+  MarchenDetailComponent
 ];
