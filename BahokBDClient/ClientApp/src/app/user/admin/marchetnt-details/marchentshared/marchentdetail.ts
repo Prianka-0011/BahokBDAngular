@@ -13,4 +13,6 @@ export class Marchentdetail {
   BranchId: string;
   RoutingName: string;
   AccountNumber: string;
+  //ImageFile: File;
+  //LogoFile: File
 }

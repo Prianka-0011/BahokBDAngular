@@ -45,15 +45,17 @@ export class MarchenDetailComponent implements OnInit {
       UserName: '',
       Email: '',
       Phone: '',
-      PayBankId: '',
-      PayTypeId: '',
-      BranchId: '',
+      PayBankId: "00000000-0000-0000-0000-000000000000",
+      PayTypeId: "00000000-0000-0000-0000-000000000000",
+      BranchId: "00000000-0000-0000-0000-000000000000",
       AccountName: '',
       AccountNumber: '',
       BusinessAddress: '',
       BusinessName: '',
       BusinessLink: '',
       RoutingName: '',
+      //ImageFile: null,
+      //LogoFile: null,
 
     }
     this.service.paymentsType();

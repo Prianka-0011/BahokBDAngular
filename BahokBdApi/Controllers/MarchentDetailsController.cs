@@ -29,6 +29,10 @@ namespace BahokBdApi.Controllers
             try
             {
                 Guid Id = Guid.Parse(Request.Form["Id"]);
+                if (Id==null)
+                {
+                    return NoContent();
+                }
                 Marchent marchent = _context.Marchents.Find(Id);
 
                 MarchentPayDetail marchentDetail = new MarchentPayDetail();

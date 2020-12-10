@@ -58,18 +58,40 @@ export class MarchentDetailService {
     formData.append('FullName', this.marchent.FullName);
     formData.append('Email', this.marchent.Email);
     formData.append('Phone', this.marchent.Phone);
-    formData.append('Image', this.imageFileToUpload, this.imageFileToUpload.name);
-    formData.append('Logo', this.logoFileToUpload, this.logoFileToUpload.name);
+    if (this.imageFileToUpload != null && this.logoFileToUpload != null) {
+      formData.append('Image', this.imageFileToUpload, this.imageFileToUpload.name);
+      formData.append('Logo', this.logoFileToUpload, this.logoFileToUpload.name);
+    }
     formData.append('BusinessName', this.marchent.BusinessName);
     formData.append('BusinessLink', this.marchent.BusinessLink);
     formData.append('BusinessAddress', this.marchent.BusinessAddress);
     formData.append('AccountName', this.marchent.AccountName);
     formData.append('AccountNumber', this.marchent.AccountNumber);
-    formData.append('PayTypeId', this.selectTypeId);
-    formData.append('PayBankId', this.selectBankId);
-    formData.append('BranchId', this.marchent.BranchId);
-    formData.append('RoutingName', this.marchent.RoutingName);
-    console.log("formData", formData)
-    return this.http.post(this.rootURL + '/MarchentDetails', this.marchent);
+    if (this.selectTypeId != "00000000-0000-0000-0000-000000000000" && this.selectTypeId != "beb41e1a-93aa-4745-8fa8-08d899fbb4b9") {
+      formData.append('PayTypeId', this.selectTypeId);
+      formData.append('PayBankId', this.selectBankId);
+      formData.append('BranchId', this.marchent.BranchId);
+      formData.append('RoutingName', this.marchent.RoutingName);
+    }
+    if (this.selectTypeId != "00000000-0000-0000-0000-000000000000" && this.selectTypeId == "beb41e1a-93aa-4745-8fa8-08d899fbb4b9") {
+      formData.append('PayTypeId', this.selectTypeId);
+      formData.append('PayBankId', this.selectBankId);
+    }
+    console.log("marchent", formData);
+    return this.http.post(this.rootURL + '/MarchentDetails', formData);
+  
+    //if (this.imageFileToUpload != null && this.logoFileToUpload) {
+    //  var body = {
+    //    ...this.marchent,
+    //    imgFile: this.imageFileToUpload,
+    //    logoFile: this.logoFileToUpload
+    //  };
+    //  console.log("formData", body)
+    //  return this.http.post(this.rootURL + '/MarchentDetails', body);
+    //}
+    //else {
+    //  return this.http.post(this.rootURL + '/MarchentDetails', this.marchent);
+    //}
+   
   }
 }

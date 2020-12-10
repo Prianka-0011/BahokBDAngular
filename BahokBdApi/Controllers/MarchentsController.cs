@@ -126,7 +126,7 @@ namespace BahokBdApi.Controllers
         {
             try
             {
-                Marchent marchent = _context.Marchents.Find(Request.Form["Id"]);
+                Marchent marchent = _context.Marchents.Find(Guid.Parse(Request.Form["Id"]));
                 
                 MarchentPayDetail marchentDetail = new MarchentPayDetail();
                 var image = Request.Form.Files[0];
