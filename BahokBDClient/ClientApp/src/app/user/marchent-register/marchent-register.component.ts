@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MarchentService } from '../userservice/marchent.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-marchent-register',
@@ -12,7 +13,7 @@ export class MarchentRegisterComponent implements OnInit {
   imageUrl: string = "/assets/images/noimage.png";
   logoUrl: string = "/assets/images/noimage.png";
 
-  constructor(public service: MarchentService) {
+  constructor(public service: MarchentService, private toastr: ToastrService ) {
     //const _this = this;
     //this.service.routingNoByBranchId().subscribe(res => {
     //  this.service.routingNo = res;
@@ -70,6 +71,10 @@ export class MarchentRegisterComponent implements OnInit {
 
       (res: any) => {
         console.log("reg", res)
+        this.service.formModel.reset();
+        this.service.imageFileToUpload = null
+        this.service.logoFileToUpload = null
+        this.toastr.success('Register', 'Successfully');
       },
       err => {
         console.log(err);

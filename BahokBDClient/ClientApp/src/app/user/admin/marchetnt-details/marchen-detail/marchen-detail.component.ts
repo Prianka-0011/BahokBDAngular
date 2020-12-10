@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MarchentDetailService } from '../marchentshared/marchent-detail.service';
+import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
     selector: 'app-marchen-detail',
@@ -12,15 +15,7 @@ export class MarchenDetailComponent implements OnInit {
   imageUrl: string = "/assets/images/noimage.png";
   logoUrl: string = "/assets/images/noimage.png";
 
-  constructor(public service: MarchentDetailService) {
-    //const _this = this;
-    //this.service.routingNoByBranchId().subscribe(res => {
-    //  this.service.routingNo = res;
-    //});
-    //this.service.routingNoByBranchId().subscribe(res => {
-    //  _this.service.routingNo = res;
-    //});
-    //console.log("_this.service", _this.service.routingNo)
+  constructor(public service: MarchentDetailService, private toastr: ToastrService) {
   }
   handleImgFileInput(file: FileList) {
     this.service.imageFileToUpload = file.item(0);
@@ -44,8 +39,26 @@ export class MarchenDetailComponent implements OnInit {
     console.log("logofile", this.service.logoFileToUpload)
   }
   ngOnInit() {
-    this.service.formModel.reset();
+    this.service.marchent = {
+      Id: '',
+      FullName: '',
+      UserName: '',
+      Email: '',
+      Phone: '',
+      PayBankId: '',
+      PayTypeId: '',
+      BranchId: '',
+      AccountName: '',
+      AccountNumber: '',
+      BusinessAddress: '',
+      BusinessName: '',
+      BusinessLink: '',
+      RoutingName: '',
+
+    }
     this.service.paymentsType();
+
+
     console.log("select", this.service.selectTypeId)
   }
   getBankListByTypeId() {
@@ -60,15 +73,21 @@ export class MarchenDetailComponent implements OnInit {
   getBranchListByTypeId() {
     this.service.branchListByTypeId();
   }
-  
-  //onSubmit() {
-  //  this.service.register().subscribe(
+  getRoutingByTypeId() {
+    //this.service.routingNoByBranchId();
+  }
+  onSubmit() {
+    this.service.register().subscribe(
 
-  //    (res: any) => {
-  //      console.log("reg", res)
-  //    },
-  //    err => {
-  //      console.log(err);
-  //    });
-  //}
+      (res: any) => {
+        console.log("reg", res)
+        //this.service..reset();
+        this.service.imageFileToUpload = null
+        this.service.logoFileToUpload = null
+        this.toastr.success('Register', 'Successfully');
+      },
+      err => {
+        console.log(err);
+      });
+  }
 }

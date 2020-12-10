@@ -30,19 +30,19 @@ export class BankBranchDetailComponent implements OnInit {
       PaymentBankId:''
     }
   }
-  onSubmit(form: NgForm) {
-    if (this.service.formData.Id == '00000000-0000-0000-0000-000000000000') {
-      console.log("formdatacheck", this.service.formData)
-      this.insertRecord(form);
+  //onSubmit(form: NgForm) {
+  //  if (this.service.formData.Id == '00000000-0000-0000-0000-000000000000') {
+  //    console.log("formdatacheck", this.service.formData)
+  //    this.insertRecord(form);
 
-    }
+  //  }
 
-    else {
-      console.log("Id Guid", this.service.formData.Id)
-      this.updateRecord(form);
-    }
+  //  else {
+  //    console.log("Id Guid", this.service.formData.Id)
+  //    this.updateRecord(form);
+  //  }
 
-  }
+  //}
 
   insertRecord(form: NgForm) {
     this.service.postBankBranchDetail().subscribe(

@@ -17,8 +17,8 @@ export class MarchentListComponent implements OnInit {
       this.service.refreshList();
   }
   populateForm(pd) {
-    this.service.formModel = Object.assign({}, pd);
-    console.log("this.service.formData", this.service.formModel)
+    this.service.marchent = Object.assign({}, pd);
+    console.log("this.service.marchent", this.service.marchent)
   }
 
 }

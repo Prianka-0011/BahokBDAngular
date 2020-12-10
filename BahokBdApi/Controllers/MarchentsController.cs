@@ -90,18 +90,30 @@ namespace BahokBdApi.Controllers
                 marchent.CreateDateTime = DateTime.Now;
                 marchent.Status = 0;
                 marchent.LastIpAddress="2GH";
-                _context.Marchents.Add(marchent);                
-                marchentDetail.MarchentId = marchent.Id;
-                marchentDetail.PayTypeId = Guid.Parse(Request.Form["PayTypeId"]);
-                marchentDetail.PayBankId = Guid.Parse(Request.Form["PayBankId"]);
-                marchentDetail.BranchId = Guid.Parse(Request.Form["BranchId"]);
-                marchentDetail.RoutingName = Request.Form["RoutingName"];
-                _context.MarchentPayDetails.Add(marchentDetail);
+                _context.Marchents.Add(marchent);
+                var typeId = "beb41e1a-93aa-4745-8fa8-08d899fbb4b9";
+                Guid payTypeId = Guid.Parse(Request.Form["PayTypeId"]);
+                if (payTypeId == Guid.Parse(typeId))
+                {
+                    marchentDetail.MarchentId = marchent.Id;
+                    marchentDetail.PayTypeId = Guid.Parse(Request.Form["PayTypeId"]);
+                    marchentDetail.PayBankId = Guid.Parse(Request.Form["PayBankId"]);
+                    marchentDetail.BranchId = Guid.Parse(Request.Form["BranchId"]);
+                    marchentDetail.RoutingName = Request.Form["RoutingName"];
+                    _context.MarchentPayDetails.Add(marchentDetail);
+                }
+                else
+                {
+                    marchentDetail.MarchentId = marchent.Id;
+                    marchentDetail.PayTypeId = Guid.Parse(Request.Form["PayTypeId"]);
+                    marchentDetail.PayBankId = Guid.Parse(Request.Form["PayBankId"]);
+
+                }
                 _context.SaveChanges();
                 ImageLogoDbPath dbPath = new ImageLogoDbPath();
-                //dbPath.ImageDbPath= Path.Combine(folderName, uniqueFileNameForImage);
-                //dbPath.LogoDbPath= Path.Combine(folderName, uniqueFileNameForLogo);
-                return Ok(new { dbPath });
+                dbPath.ImageDbPath=  uniqueFileNameForImage;
+                dbPath.LogoDbPath=  uniqueFileNameForLogo;
+                return Ok(new{ dbPath});
             }
             catch (Exception ex)
             {
@@ -109,7 +121,7 @@ namespace BahokBdApi.Controllers
             }
             
         }
-        [HttpPut("{id}"), DisableRequestSizeLimit]
+        [HttpPost, DisableRequestSizeLimit]
         public IActionResult PutMarchent()
         {
             try

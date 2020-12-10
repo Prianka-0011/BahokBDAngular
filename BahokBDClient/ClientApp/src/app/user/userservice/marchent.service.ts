@@ -56,13 +56,6 @@ export class MarchentService {
     this.http.get(this.rootURL + '/BankBranches/' + this.selectBankId, { headers: tokenHader })
       .toPromise().then(res => this.branchList = res);
   }
-  //routingNoByBranchId() {
-  //  var tokenHader = new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') });
-  //  // console.log("promice", toPromise())
-  //  return this.http.get(this.rootURL + '/Marchents/' + this.selectBranchId, { headers: tokenHader })
-  //    //.toPromise().then(res => _this.routingNo = res);
-  // // console.log("this.routingNo ", _this.routingNo )
-  //}
   register() {
     const formData = new FormData();
     formData.append('UserName', this.formModel.value.UserName);
@@ -80,25 +73,6 @@ export class MarchentService {
     formData.append('PayBankId', this.formModel.value.PayBankId);
     formData.append('BranchId', this.formModel.value.BranchId);
     formData.append('RoutingName', this.formModel.value.RoutingName);
-    //var body = {
-    //  UserName: this.formModel.value.UserName,
-    //  FullName: this.formModel.value.FullName,
-    //  Email: this.formModel.value.Email,
-    //  Phone: this.formModel.value.Phone,
-    //  Image: this.imageFileToUpload,
-    //  Logo: this.logoFileToUpload,
-    //  BusinessName: this.formModel.value.BusinessName,
-    //  BusinessLink: this.formModel.value.BusinessLink,
-    //  BusinessAddress: this.formModel.value.BusinessAddress,
-    //  AccountName: this.formModel.value.AccountName,
-    //  AccountNumber: this.formModel.value.AccountNumber,
-    //  PayTypeId: this.formModel.value.PayTypeId,
-    //  PayBankId: this.formModel.value.PayBankId,
-    //  BranchId: this.formModel.value.BranchId,
-    //  RoutingName: this.formModel.value.RoutingName,
-      
-    //}
-    // console.log("body", body)
     return this.http.post(this.rootURL + '/Marchents', formData);
   }
 }
