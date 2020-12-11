@@ -11,7 +11,7 @@ import { PaymentService } from './payment-type-details/shared/payment.service';
 import { BankingService } from './payment-banking-details/bankshared/banking.service';
 import { BranchService } from './bank-branch-details/branchshared/branch.service';
 import { MarchentDetailService } from './marchetnt-details/marchentshared/marchent-detail.service';
-
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { MarchentDetailService } from './marchetnt-details/marchentshared/marche
     CommonModule,
     FormsModule,
     RouterModule,
+    NzButtonModule,
     //ReactiveFormsModule,
     ToastrModule.forRoot()
   ],
